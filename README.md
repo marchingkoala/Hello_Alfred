@@ -1,10 +1,17 @@
-# Getting Started with Create React App
+### 'HEllO_ALFRED'
+We have Siri for our phone and Alexa for our home.
+But What about our desktop? Ever since I saw the movie 'The Batman' and 'The Ironman',
+I've always wanted my own personal AI butler with gorgeous English accent!
+Alfred lives inside your desktop to keep your schedule tidy, alert you and cheer you on! 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
+0. Import Dependencies - done
+1. Create Model and Action states - done
+2. Create recognizer - done
+3. Create list for Actions - done
+4. Display commands - done
+5. Train the butler to use more words
+6. Execution of commands
+7. Set up replies ( possibly with English accent, because WHY THE HELL NOT?)
 
 ### `npm start`
 

@@ -15,16 +15,13 @@ function App() {
 
   // 2. Create recognizer
   const loadModel = async () =>{
-    const URL = "https://teachablemachine.withgoogle.com/models/NyWKiL6-r/";
+    const URL = "https://teachablemachine.withgoogle.com/models/e6Wdd7jNE/";
     const checkpoint = URL + "model.json"
     const metaData = URL + "metadata.json"
     // 5. Train the butler to use more words
     const recognizer = await speech.create("BROWSER_FFT", undefined, checkpoint, metaData); //BROWER-FFT allows the brower api to read through audio stream
     console.log("Model loaded")
     await recognizer.ensureModelLoaded();
-    // const transferRecognizer = recognizer.createTransfer('color');
-    // await transferRecognizer.collectExample('red');
-    // await transferRecognizer.collectExample('blue')
     console.log(recognizer.wordLabels());
     setModel(recognizer);
     setLabel(recognizer.wordLabels());
@@ -48,7 +45,6 @@ function App() {
     model.listen(result => {
       console.log(result)
       setAction(labels[argMax(Object.values(result.scores))])
-      console.log(action)
     }, {includeSpectrogram: true, overlapFactor: 0.5, probabilityThreshold: 0.75})
     //will generate spectrogram (a picture of sound)
     //probability threshold can be adjusted. I put 0.7 because I have accent

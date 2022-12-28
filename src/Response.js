@@ -60,6 +60,7 @@ const Response = ({action}) => {
             );
           break;
         case "Jazz":
+            speak("Here's your jazz, miss")
             const playJazz = () => {
                 window.open("https://www.youtube.com/watch?v=lR7icNffxXE");
             }

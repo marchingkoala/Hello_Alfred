@@ -22,9 +22,6 @@ function App() {
     const recognizer = await speech.create("BROWSER_FFT", undefined, checkpoint, metaData); //BROWER-FFT allows the brower api to read through audio stream
     console.log("Model loaded")
     await recognizer.ensureModelLoaded();
-    // const transferRecognizer = recognizer.createTransfer('color');
-    // await transferRecognizer.collectExample('red');
-    // await transferRecognizer.collectExample('blue')
     console.log(recognizer.wordLabels());
     setModel(recognizer);
     setLabel(recognizer.wordLabels());
@@ -48,7 +45,7 @@ function App() {
     model.listen(result => {
       console.log(result)
       setAction(labels[argMax(Object.values(result.scores))])
-    }, {includeSpectrogram: true, overlapFactor: 0.5, probabilityThreshold: 0.9})
+    }, {includeSpectrogram: true, overlapFactor: 0.5, probabilityThreshold: 0.75})
     //will generate spectrogram (a picture of sound)
     //probability threshold can be adjusted. I put 0.7 because I have accent
     //however 0.99 will be the most accurate for native english speakers

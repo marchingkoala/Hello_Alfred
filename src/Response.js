@@ -38,14 +38,15 @@ const Response = ({action}) => {
         window.speechSynthesis.speak(speech);
     }
 
+
     // 7. Set up replies ( possibly with English accent, because WHY THE HELL NOT?)
   const processWord = async (action) => {
       switch (action) {
         case "Hello":
-           speak("Hello Miss! How are you doing today?");
+           speak("Hello, miss. What can I do for you today?");
           break;
         case "Alfred":
-            speak("Yes, Miss?")
+            speak("Hello, miss. What can I do for you today?")
           break;
         case "Good Evening":
             speak("Good Evening Miss!")
@@ -58,6 +59,9 @@ const Response = ({action}) => {
             speak(
               `Right now in ${jsonweather.location.name}, it's ${jsonweather.current.temp_f} fahrenheit with ${jsonweather.current.condition.text}`
             );
+            if(jsonweather.current.temp_f < 60){
+              speak("it's bit chilly today. Please dress warmly, miss")
+            }
           break;
         case "Jazz":
             speak("Here's your jazz, miss")
@@ -113,11 +117,7 @@ const Response = ({action}) => {
       processWord(action);
   }
 
-  return (
-    <div>
-      {action ? onListen(action) : <div>waiting...</div>}
-    </div>
-  );
+  return <div>{action ? onListen(action) : <p>{action}</p>}</div>;
 };
 
 export default Response;

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React, {useEffect, useState } from "react"
 import * as tf from "@tensorflow/tfjs"
@@ -61,12 +60,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img className='alfred_logo' src='./alfred_logo.png' width="300px" />
+        <h1>My name is AI_fred</h1>
         <p>
           How can I help you today?
         </p>
         {/*  // 4. Display commands */}
-        <button onClick={recognizeCommands}>Command</button>
+        <button onClick={recognizeCommands}>Click here to speak</button>
         <Response action= {action} />
       </header>
     </div>

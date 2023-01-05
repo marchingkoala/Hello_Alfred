@@ -2,7 +2,7 @@ import React from 'react';
 
 const Response = ({action}) => {
     
-    
+    // weather api
     const getWeather = async () => {
         const weatherData = await fetch(
             `http://api.weatherapi.com/v1/current.json?key=47869e94aafd4fadbb0210955222712&q=New York&aqi=no`
@@ -10,6 +10,7 @@ const Response = ({action}) => {
             const jsonweather = await weatherData.json();
             return jsonweather
         };
+    // for today's date & day
     const todaysDate = () => {
         let newDate = new Date();
         let date = newDate.getDate();
@@ -17,14 +18,17 @@ const Response = ({action}) => {
         let year = newDate.getFullYear();
         let day = newDate.getDay();
 
-        return `Today is ${month} ${date} of ${year} and it's ${day}`
+        let monthArr = ["zero", "januray", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
+        let thisMonth = monthArr[month]
+        return `Today is ${thisMonth} ${date}th of ${year} and it's ${day}`;
     }
+    // for some bad jokes
     const chucknorrisJoke = async () => {
         const jokeAPI = await fetch("https://api.chucknorris.io/jokes/random");
         const jsonJoke = await jokeAPI.json()
         return jsonJoke;
     }
-
+    // devjoke instead of dadjoke!
     const devJoke = async () => {
         const thejoke = await fetch(
           "https://backend-omega-seven.vercel.app/api/getjoke"
@@ -32,6 +36,7 @@ const Response = ({action}) => {
         const jsonjoke = await thejoke.json();
         return jsonjoke;
     }
+
     //below function will allow Alfred to 'speak back' to me
     const speak = (text)=>{
         const speech = new window.SpeechSynthesisUtterance(text); //convert text to speech
@@ -39,17 +44,22 @@ const Response = ({action}) => {
     }
 
 
-    // 7. Set up replies ( possibly with English accent, because WHY THE HELL NOT?)
-  const processWord = async (action) => {
+    // 7. Set up replies
+    const processWord = async (action) => {
       switch (action) {
         case "Hello":
-           speak("Hello, miss. What can I do for you today?");
+           speak("Hello! What can I do for you today?");
+           setTimeout(() => {
+             speak(
+               "I can play music, report weather, tell jokes or simply keep you company"
+             );
+           }, 1500);
           break;
         case "Alfred":
-            speak("Hello, miss. What can I do for you today?")
+            speak("Hello! What can I do for you today?")
           break;
         case "Good Evening":
-            speak("Good Evening Miss!")
+            speak("Good Evening. What a splendid night")
           break;
         case "Good Morning":
             speak("Good Morning to you too!")
@@ -60,7 +70,10 @@ const Response = ({action}) => {
               `Right now in ${jsonweather.location.name}, it's ${jsonweather.current.temp_f} fahrenheit with ${jsonweather.current.condition.text}`
             );
             if(jsonweather.current.temp_f < 60){
-              speak("it's bit chilly today. Please dress warmly, miss")
+              speak("it's bit chilly today. Please dress warmly. ")
+            }
+            if(jsonweather.current.temp_f > 60){
+              speak("it's a bit warm out there. ")
             }
           break;
         case "Jazz":
@@ -71,7 +84,7 @@ const Response = ({action}) => {
             playJazz();
             break;
         case "Cheer":
-            speak("Don't worry about a thing, Miss! I believe in you.")
+            speak("Don't worry about a thing. Everything is going to be ok")
             break;
         case "Dadjoke":
             speak("Here's a dad joke for you, miss");
@@ -94,7 +107,7 @@ const Response = ({action}) => {
             speak("He is still here. I don't think he has found out yet...")
             break;
         case "Joke":
-            speak("Here's a good one for you, miss")
+            setTimeout(() => {speak("Here's a good one for you, miss"); }, 1500)
             const badjoke = await chucknorrisJoke();
             setTimeout(()=> { speak(`${badjoke.value}`)}, 3000)
             break;

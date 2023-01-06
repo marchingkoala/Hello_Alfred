@@ -1,17 +1,21 @@
 ### 'HEllO_ALFRED'
-We have Siri for our phone and Alexa for our home.
-But What about our desktop? Ever since I saw the movie 'The Batman' and 'The Ironman',
-I've always wanted my own personal AI butler with gorgeous English accent!
-Alfred lives inside your desktop to keep your schedule tidy, alert you and cheer you on! 
+I wanted to explore the idea of AI and machine learning with TensorFlow speech command.
 
-0. Import Dependencies - done
-1. Create Model and Action states - done
-2. Create recognizer - done
-3. Create list for Actions - done
-4. Display commands - done
+*Tensorflow Speech command
+https://www.npmjs.com/package/@tensorflow-models/speech-commands
+
+0. Import Dependencies 
+1. Create Model and Action states 
+2. Create recognizer 
+3. Create list for Actions 
+4. Display commands 
 5. Train the butler to use more words
 6. Execution of commands
 7. Set up replies ( possibly with English accent, because WHY THE HELL NOT?)
+
+You can train your own AI using below link.
+https://teachablemachine.withgoogle.com/train/audio
+
 
 ### `npm start`
 

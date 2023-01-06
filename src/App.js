@@ -46,7 +46,7 @@ function App() {
       setAction(labels[argMax(Object.values(result.scores))])
     }, {includeSpectrogram: true, overlapFactor: 0.5, probabilityThreshold: 0.75})
     //will generate spectrogram (a picture of sound)
-    //probability threshold can be adjusted. I put 0.7 because I have accent
+    //probability threshold can be adjusted. I put 0.75 because I have accent
     //however 0.99 will be the most accurate for native english speakers
     
     setTimeout(() => {
